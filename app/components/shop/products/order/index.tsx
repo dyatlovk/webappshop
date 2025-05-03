@@ -1,7 +1,7 @@
 import { useCallback, type JSX } from 'react'
 import { XMarkIcon } from '@heroicons/react/16/solid'
 import settings from '~/fixtures/settings'
-import { generatePath, Link } from 'react-router'
+import { Link } from 'react-router'
 import { Image } from '~/framework/link'
 
 interface Props {
@@ -35,7 +35,10 @@ const Order = (props: Props): JSX.Element => {
         <h3 className="mb-2">
           <Link to={`/shop/product/${props.id}`}>{props.name}</Link>
         </h3>
-        <p className="mt-3">{settings.currency}{props.price}</p>
+        <p className="mt-3">
+          {settings.currency}
+          {props.price}
+        </p>
       </div>
 
       <div className="close">
@@ -46,7 +49,7 @@ const Order = (props: Props): JSX.Element => {
           type="button"
           className="p-4 focus:bg-gray-700 rounded-md"
         >
-          <XMarkIcon width={12} height={12} className='fill-gray-200' />
+          <XMarkIcon width={12} height={12} className="fill-gray-200" />
         </button>
       </div>
     </div>

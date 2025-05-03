@@ -3,7 +3,7 @@ import CartContext from '~/components/cart/context'
 import styles from './style.module.css'
 import classNames from 'classnames/bind'
 import settings from '~/fixtures/settings'
-import { generatePath, Link } from 'react-router'
+import { Link } from 'react-router'
 import { Image } from '~/framework/link'
 
 const cx = classNames.bind(styles)

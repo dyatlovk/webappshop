@@ -1,15 +1,8 @@
-import { useCallback, useContext, useEffect, useState } from 'react'
+import { useCallback, useContext, useState } from 'react'
 import type { Route } from './+types/product'
 import CartContext from '~/components/cart/context'
 import settings from '~/fixtures/settings'
 import { single } from '~/fixtures/products'
-import {
-  generatePath,
-  matchRoutes,
-  resolvePath,
-  UNSAFE_NavigationContext,
-  useHref,
-} from 'react-router'
 import { Image } from '~/framework/link'
 
 export function meta({}: Route.MetaArgs) {

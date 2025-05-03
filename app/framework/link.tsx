@@ -8,7 +8,7 @@ interface ImageProps {
 }
 
 const Image = (props: ImageProps): JSX.Element => {
-  let { basename, navigator } = useContext(UNSAFE_NavigationContext)
+  let { basename } = useContext(UNSAFE_NavigationContext)
   let href = basename + props.src
   href = href.replace('//', '/')
 
