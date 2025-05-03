@@ -5,6 +5,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import svgr from 'vite-plugin-svgr'
 
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/webappshop/' : '/',
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths(), svgr()],
   resolve: {
     alias: {
