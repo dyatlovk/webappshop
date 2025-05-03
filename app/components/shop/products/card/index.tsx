@@ -3,6 +3,7 @@ import CartContext from '~/components/cart/context'
 import styles from './style.module.css'
 import classNames from 'classnames/bind'
 import settings from '~/fixtures/settings'
+import { MyLink } from '~/framework/link'
 const cx = classNames.bind(styles)
 
 const ProductCard = (props: Shop.Product): JSX.Element => {
@@ -15,18 +16,18 @@ const ProductCard = (props: Shop.Product): JSX.Element => {
 
   return (
     <div className="group relative border-border border rounded-md">
-      <a href={`/shop/product/${props.id}`}>
+      <MyLink to={`/shop/product/${props.id}`}>
         <img
           src={props.imageSrc}
           className="aspect-square w-full rounded-tl-sm rounded-tr-sm object-cover lg:aspect-auto lg:h-80"
         />
-      </a>
+      </MyLink>
 
       <div className="p-4">
         <div className="flex flex-col justify-between">
           <div>
             <h3 className={styles.title}>
-              <a href={`shop/product/${props.id}`}>{props.name}</a>
+              <MyLink to={`shop/product/${props.id}`}>{props.name}</MyLink>
             </h3>
             <div className={styles.layout}>
               <p className={cx(styles.price)}>{settings.currency}{props.price}</p>

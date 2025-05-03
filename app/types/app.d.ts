@@ -16,6 +16,7 @@ namespace App {
   
   declare interface Settings {
     currency: string,
+    basePath: string,
   }
 }
 

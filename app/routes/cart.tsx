@@ -4,13 +4,14 @@ import { useCallback, useState } from 'react'
 import Delivery from '~/components/delivery/delivery'
 import settings from '~/fixtures/settings'
 import { cart } from '~/fixtures/products'
+import { MyNavLink } from '~/framework/link'
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'Cart Page' }, { name: 'description', content: 'Welcome to React Router!' }]
 }
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
-  return cart();
+  return cart()
 }
 
 export default function Cart({ loaderData }: Route.ComponentProps) {
@@ -60,9 +61,9 @@ export default function Cart({ loaderData }: Route.ComponentProps) {
             <div>{settings.currency}112.32</div>
           </div>
         </div>
-        <a href="/checkout" className="btn-primary" type="button">
+        <MyNavLink to="/checkout" className="btn-primary">
           Checkout
-        </a>
+        </MyNavLink>
       </div>
     </div>
   )

@@ -1,5 +1,5 @@
 import type { Route } from './+types/checkout'
-import { Link } from 'react-router'
+import { MyLink } from '~/framework/link'
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'Checkout Page' }, { name: 'description', content: 'Welcome to React Router!' }]
@@ -12,7 +12,7 @@ export default function Home() {
         <h1>Congratulations</h1>
       </div>
       <div className="">
-        <Link to={'/'} className="btn-primary">Continue shopping</Link>
+        <MyLink to={'/'} className="btn-primary">Continue shopping</MyLink>
       </div>
     </div>
   )

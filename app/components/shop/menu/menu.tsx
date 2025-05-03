@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import styles from './style.module.css'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/16/solid'
 import { menu } from '~/fixtures/products'
+import { MyNavLink } from '~/framework/link'
 
 interface Props {
   isVisible: (state: boolean) => void
@@ -99,7 +100,7 @@ interface PropsItem {
 
 const Item = (props: PropsItem): JSX.Element => {
   return (
-    <NavLink
+    <MyNavLink
       className={({ isActive }) =>
         [isActive ? styles.active : styles.default].join(' ')
       }
@@ -107,7 +108,7 @@ const Item = (props: PropsItem): JSX.Element => {
       onClick={props.onClick}
     >
       {props.item.label}
-    </NavLink>
+    </MyNavLink>
   )
 }
 
