@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: ui-sans-serif, system-ui, sans-serif;
+    --color-primary: white;
+    --color-secondary: black;
+    --color-accent: #9D50BB;
+    --color-accent2: #6E48AA;
+    --color-mid: var(--color-gray-100);
+    --color-border: var(--color-gray-200);
+    --color-gradient: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent2) 100%);
+}
+
+@variant dark {
+    --color-primary: black;
+    --color-secondary: white;
+    --color-accent: #9D50BB;
+    --color-accent2: #6E48AA;
+    --color-mid: var(--color-gray-800);
+    --color-border: var(--color-gray-800);
+    --color-gradient: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent2) 100%);
+}

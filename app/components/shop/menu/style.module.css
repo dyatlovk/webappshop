@@ -1,0 +1,37 @@
+@import 'tailwindcss';
+@import "@/theme.css";
+
+@utility link {
+    @apply px-3 py-2;
+    @apply box-border;
+    @apply rounded-md;
+    @apply text-left;
+}
+
+.default {
+    @apply link flex items-center justify-between;
+}
+
+.child {
+    @apply pl-2;
+    @apply flex;
+    @apply flex-col;
+    @apply gap-1;
+    @apply mt-1 mb-2;
+}
+
+.active {
+    @apply link;
+    @apply text-primary bg-accent;
+    display: block;
+}
+
+.layout {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 56px);
+    @apply p-2 gap-1 flex flex-col z-20 bg-primary;
+    overflow-y: auto;
+}

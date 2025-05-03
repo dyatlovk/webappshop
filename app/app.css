@@ -1,0 +1,89 @@
+@import 'tailwindcss';
+@import "@/theme.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html,
+body {
+    @apply bg-primary text-secondary;
+    height: 100%;
+}
+
+.lock-scroll {
+    overflow: hidden;
+}
+
+h1 {
+    @apply text-2xl;
+    @apply font-bold;
+}
+
+h2 {
+    @apply text-xl;
+    @apply font-bold;
+}
+
+.input {
+    @apply px-2 py-2 rounded-md box-border border bg-primary border-border w-full text-secondary;
+}
+
+@layer components {
+    .btn-primary {
+        @apply rounded-md;
+        @apply text-primary dark:text-secondary;
+        @apply px-3 py-2;
+        @apply block;
+        @apply text-center;
+        @apply outline-0;
+        @apply border-0;
+        @apple appearance-none;
+        background: var(--color-gradient);
+
+        &:hover {
+            @apply bg-accent/80;
+        }
+    }
+
+    .link {
+        @apply text-accent;
+
+        &:hover {
+            @apply text-accent;
+        }
+
+        &.active {
+            @apply cursor-text text-gray-500;
+        }
+    }
+
+    .wrap {
+        @apply px-4 sm:px-6 box-border;
+    }
+
+    .loader {
+        width: 48px;
+        height: 48px;
+        border: 5px solid #FFF;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+    }
+
+    .loader-wrap {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

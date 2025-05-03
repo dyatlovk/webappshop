@@ -1,0 +1,17 @@
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.suggest.autoImports": true,
+    "javascript.suggest.autoImports": true,
+    "files.associations": {
+        "*.css": "tailwindcss",
+        "*.scss": "tailwindcss"
+    },
+    "tailwindCSS.includeLanguages": {
+        "plaintext": "html"
+    },
+    "tailwindCSS.emmetCompletions": true,
+    "tailwindCSS.classFunctions": [
+        "tw",
+        "clsx"
+    ]
+}

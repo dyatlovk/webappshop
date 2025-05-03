@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+@import "@/theme.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+.layout {
+    @apply flex justify-between;
+}
+
+.button {
+    @apply rounded-md px-4 py-2;
+}

@@ -1,0 +1,34 @@
+@import 'tailwindcss';
+@import "@/theme.css";
+
+@utility price {
+    @apply font-medium;
+}
+
+.price {
+    @apply price text-lg;
+}
+
+.title {
+    @apply text-base font-semibold mb-2;
+}
+
+.old_price {
+    @apply price text-sm text-secondary/40;
+    position: relative;
+
+    &:after {
+        @apply bg-gray-500;
+        content: '';
+        position: absolute;
+        left: -3px;
+        top: 8px;
+        width: 126%;
+        height: 1px;
+        transform: rotate(-24deg);
+    }
+}
+
+.layout {
+    @apply flex flex-row gap-2 mt-2 mb-4 items-baseline;
+}
