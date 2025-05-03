@@ -1,5 +1,4 @@
-import { useCallback, useMemo, useState, type JSX, useEffect, useRef, useContext } from 'react'
-import { NavLink } from 'react-router'
+import { useCallback, useMemo, useState, type JSX, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import styles from './style.module.css'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/16/solid'
@@ -101,9 +100,7 @@ interface PropsItem {
 const Item = (props: PropsItem): JSX.Element => {
   return (
     <MyNavLink
-      className={({ isActive }) =>
-        [isActive ? styles.active : styles.default].join(' ')
-      }
+      className={({ isActive }) => [isActive ? styles.active : styles.default].join(' ')}
       to={props.item.href}
       onClick={props.onClick}
     >
