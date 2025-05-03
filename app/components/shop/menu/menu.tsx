@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import styles from './style.module.css'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/16/solid'
 import { menu } from '~/fixtures/products'
-import { MyNavLink } from '~/framework/link'
+import { NavLink } from 'react-router'
 
 interface Props {
   isVisible: (state: boolean) => void
@@ -99,13 +99,13 @@ interface PropsItem {
 
 const Item = (props: PropsItem): JSX.Element => {
   return (
-    <MyNavLink
+    <NavLink
       className={({ isActive }) => [isActive ? styles.active : styles.default].join(' ')}
       to={props.item.href}
       onClick={props.onClick}
     >
       {props.item.label}
-    </MyNavLink>
+    </NavLink>
   )
 }
 

@@ -1,32 +1,18 @@
-import type { JSX, PropsWithChildren } from 'react'
-import { Link, NavLink, type NavLinkRenderProps } from 'react-router'
-import settings from '~/fixtures/settings'
+import { type JSX, useContext } from 'react'
+import { UNSAFE_NavigationContext } from 'react-router'
 
-interface Props {
-  to: string
-  className?: string | ((props: NavLinkRenderProps) => string | undefined)
-  onClick?: (() => void) | undefined
-}
-
-const MyNavLink = (props: PropsWithChildren<Props>): JSX.Element => {
-  return (
-    <NavLink to={settings.basePath + props.to} className={props.className} onClick={props.onClick}>
-      {props.children}
-    </NavLink>
-  )
-}
-
-interface LinkProps {
-  to: string
+interface ImageProps {
+  src: string
   className?: string
-  onClick?: (() => void) | undefined
-}
-const MyLink = (props: PropsWithChildren<LinkProps>): JSX.Element => {
-  return (
-    <Link to={settings.basePath + props.to} className={props.className}>
-      {props.children}
-    </Link>
-  )
+  alt?: string
 }
 
-export { MyNavLink, MyLink }
+const Image = (props: ImageProps): JSX.Element => {
+  let { basename, navigator } = useContext(UNSAFE_NavigationContext)
+  let href = basename + props.src
+  href = href.replace('//', '/')
+
+  return <img className={props.className} src={href} alt={props.alt} />
+}
+
+export { Image }

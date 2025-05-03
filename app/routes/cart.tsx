@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react'
 import Delivery from '~/components/delivery/delivery'
 import settings from '~/fixtures/settings'
 import { cart } from '~/fixtures/products'
-import { MyNavLink } from '~/framework/link'
+import { NavLink } from 'react-router'
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'Cart Page' }, { name: 'description', content: 'Welcome to React Router!' }]
@@ -61,9 +61,9 @@ export default function Cart({ loaderData }: Route.ComponentProps) {
             <div>{settings.currency}112.32</div>
           </div>
         </div>
-        <MyNavLink to="/checkout" className="btn-primary">
+        <NavLink to="/checkout" className="btn-primary">
           Checkout
-        </MyNavLink>
+        </NavLink>
       </div>
     </div>
   )

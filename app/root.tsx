@@ -1,4 +1,4 @@
-import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
+import { isRouteErrorResponse, Links, Meta, NavLink, Outlet, Scripts, ScrollRestoration } from 'react-router'
 
 import type { Route } from './+types/root'
 import '~/app.css'
@@ -8,7 +8,6 @@ import CartIco from '~/components/cart/ui'
 import useBodyScrollLock from '~/hooks/bodylock'
 import ThemeContext from '~/contexts/theme'
 import { Bars3Icon, MoonIcon, SunIcon, XMarkIcon } from '@heroicons/react/16/solid'
-import { MyNavLink } from '~/framework/link'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false)
@@ -49,9 +48,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   <Bars3Icon width={18} height={18} />
                 )}
               </button>
-              <MyNavLink className={'font-bold uppercase'} to={'/'}>
+              <NavLink className={'font-bold uppercase'} to={'/'}>
                 Shop
-              </MyNavLink>
+              </NavLink>
             </div>
             <div className="icons flex flex-row items-center gap-2">
               <button className="cursor-pointer h-[34px] px-1" onClick={themeToggle}>
@@ -61,7 +60,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   <MoonIcon width={18} height={18} />
                 )}
               </button>
-              <MyNavLink
+              <NavLink
                 to={'/cart'}
                 className={({ isActive }) =>
                   isActive
@@ -70,7 +69,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 }
               >
                 <CartIco />
-              </MyNavLink>
+              </NavLink>
             </div>
           </header>
           <main className="flex grow sm:py-6 py-0">{children}</main>

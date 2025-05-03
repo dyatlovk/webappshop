@@ -1,8 +1,16 @@
-import { useCallback, useContext, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import type { Route } from './+types/product'
 import CartContext from '~/components/cart/context'
 import settings from '~/fixtures/settings'
 import { single } from '~/fixtures/products'
+import {
+  generatePath,
+  matchRoutes,
+  resolvePath,
+  UNSAFE_NavigationContext,
+  useHref,
+} from 'react-router'
+import { Image } from '~/framework/link'
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'Product Page' }, { name: 'description', content: 'Welcome to React Router!' }]
@@ -20,19 +28,19 @@ export default function Product({ loaderData }: Route.ComponentProps) {
     setSelectedImage(id)
   }, [])
 
-  const addBagHandler = useCallback((price: number) => {
-    const newNumber = Number(total) + price
-    setTotal(newNumber)
-  }, [total, setTotal])
+  const addBagHandler = useCallback(
+    (price: number) => {
+      const newNumber = Number(total) + price
+      setTotal(newNumber)
+    },
+    [total, setTotal]
+  )
 
   return (
     <div>
       <div className="images flex flex-col gap-0">
-        <img
-          className="h-90 object-cover"
-          src={loaderData.images?.[selectedImage] || ''}
-        />
-        
+        <Image className="h-90 object-cover" src={loaderData.images?.[selectedImage] || ''} />
+
         <div className="previews wrap gap-2 p-2 flex flex-nowrap w-screen overflow-x-auto">
           {loaderData.images?.map((image: string, id: number) => (
             <div
@@ -46,10 +54,7 @@ export default function Product({ loaderData }: Route.ComponentProps) {
                 imageHandler(id)
               }}
             >
-              <img
-                className="object-cover rounded-sm h-[90px] w-full"
-                src={image}
-              />
+              <Image className="object-cover rounded-sm h-[90px] w-full" src={image} />
             </div>
           ))}
         </div>

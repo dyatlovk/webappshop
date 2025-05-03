@@ -1,7 +1,8 @@
 import { useCallback, type JSX } from 'react'
 import { XMarkIcon } from '@heroicons/react/16/solid'
 import settings from '~/fixtures/settings'
-import { MyLink } from '~/framework/link'
+import { generatePath, Link } from 'react-router'
+import { Image } from '~/framework/link'
 
 interface Props {
   id: number
@@ -25,14 +26,14 @@ const Order = (props: Props): JSX.Element => {
   return (
     <div className="flex flex-row gap-5 py-6 box-border border-border border-b">
       <div className="img w-20 min-w-20 rounded-md">
-        <MyLink to={`/shop/product/${props.id}`}>
-          <img className="object-cover w-full h-full rounded-md" src={props.imageSrc} />
-        </MyLink>
+        <Link to={`/shop/product/${props.id}`}>
+          <Image src={props.imageSrc} className="object-cover w-full h-full rounded-md" />
+        </Link>
       </div>
 
       <div className="info w-full">
         <h3 className="mb-2">
-          <MyLink to={`/shop/product/${props.id}`}>{props.name}</MyLink>
+          <Link to={`/shop/product/${props.id}`}>{props.name}</Link>
         </h3>
         <p className="mt-3">{settings.currency}{props.price}</p>
       </div>

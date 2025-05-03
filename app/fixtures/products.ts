@@ -5,7 +5,7 @@ export function homeProducts(): Shop.Product[] {
       name: 'The Kaleidoscope Geometric Tee',
       description:
         '<p>Made from premium, soft-touch cotton for ultimate comfort and durability. Designed with a modern, comfortable fit.</p>',
-      imageSrc: '/images/3.jpg',
+      imageSrc: 'images/3.jpg',
       price: '35',
     },
     {
@@ -13,7 +13,7 @@ export function homeProducts(): Shop.Product[] {
       name: 'Kaleidoscope Geometric t-shirt',
       description:
         '<p>Make a statement with our eye-catching Kaleidoscope Geometric t-shirt!</p>',
-      imageSrc: '/images/2.jpg',
+      imageSrc: 'images/2.jpg',
       price: '35',
       oldPrice: '55',
     },
@@ -22,7 +22,7 @@ export function homeProducts(): Shop.Product[] {
       name: 'Item',
       description:
         '<p>Perfect for anyone who loves bold patterns, modern art, and expressing their vibrant personality</p>',
-      imageSrc: '/images/4.jpg',
+      imageSrc: 'images/4.jpg',
       price: '35',
     },
   ]
