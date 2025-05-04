@@ -2,8 +2,7 @@ import React, { createContext, useState } from 'react'
 
 const ThemeContext = createContext<App.ThemeContext>({
   theme: 'light',
-  setTheme: (theme: string) => {
-  },
+  setTheme: (theme: string) => {},
 })
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {

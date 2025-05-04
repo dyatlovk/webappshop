@@ -1,3 +1,17 @@
+declare global {
+  interface Window {
+    Telegram?: {
+      WebApp: {
+        ready: () => void;
+        themeParams: {
+          is_dark: boolean;
+        };
+        expand: () => void;
+      };
+    };
+  }
+}
+
 namespace App {
   declare interface CartContext {
     total: Number

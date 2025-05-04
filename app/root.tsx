@@ -11,17 +11,28 @@ import {
 import type { Route } from './+types/root'
 import '~/app.css'
 import { ShopMenuPopup, ShopMenu } from '~/components/shop/menu/menu'
-import { useCallback, useState, useContext, type ReactNode } from 'react'
+import { useCallback, useState, useContext, type ReactNode, useEffect } from 'react'
 import CartIco from '~/components/cart/ui'
 import useBodyScrollLock from '~/hooks/bodylock'
 import ThemeContext from '~/contexts/theme'
 import { Bars3Icon, MoonIcon, SunIcon, XMarkIcon } from '@heroicons/react/16/solid'
 
 export function Layout({ children }: { children: ReactNode }) {
-  const [isMenuVisible, setisMenuVisible] = useState<boolean>(false)
+  const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false)
 
   useBodyScrollLock(isMenuVisible)
   const { theme, setTheme } = useContext(ThemeContext)
+
+  useEffect(() => {
+    if ((window as any).Telegram.WebApp) {
+      const tg = (window as any).Telegram.WebApp
+      tg.ready()
+
+      if (tg.themeParams.is_dark) {
+        setTheme('dark')
+      }
+    }
+  }, [setTheme])
 
   const themeToggle = useCallback(() => {
     if (theme === 'dark') {
@@ -33,7 +44,7 @@ export function Layout({ children }: { children: ReactNode }) {
   }, [setTheme, theme])
 
   const onMenuButton = useCallback(() => {
-    setisMenuVisible(!isMenuVisible)
+    setIsMenuVisible(!isMenuVisible)
   }, [isMenuVisible])
 
   return (
@@ -44,6 +55,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <Meta />
         <Links />
         <title>Title</title>
+        <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
       </head>
       <body>
         <div className="root flex flex-col min-h-full">
@@ -91,7 +103,7 @@ export function Layout({ children }: { children: ReactNode }) {
           {isMenuVisible ? (
             <ShopMenuPopup
               isVisible={(state: boolean) => {
-                setisMenuVisible(state)
+                setIsMenuVisible(state)
               }}
             />
           ) : (
