@@ -5,6 +5,7 @@ import classNames from 'classnames/bind'
 import settings from '~/fixtures/settings'
 import { Link } from 'react-router'
 import { Image } from '~/framework/link'
+import { ShoppingBagIcon, ShoppingCartIcon } from '@heroicons/react/16/solid'
 
 const cx = classNames.bind(styles)
 
@@ -20,45 +21,46 @@ const ProductCard = (props: Shop.Product): JSX.Element => {
   )
 
   return (
-    <div className="group relative border-border border rounded-md">
-      <Link to={`/shop/product/${props.id}`}>
+    <div className="relative rounded-md flex flex-col">
+      <Link to={`/shop/product/${props.id}`} className="w-full">
         <Image
-          className="aspect-square w-full rounded-tl-sm rounded-tr-sm object-cover lg:aspect-auto lg:h-80"
+          className="aspect-square sm:aspect-2/3 w-full rounded-sm object-cover h-80"
           src={props.imageSrc}
         />
       </Link>
 
-      <div className="p-4">
-        <div className="flex flex-col justify-between">
-          <div>
-            <h3 className={styles.title}>
-              <Link to={`shop/product/${props.id}`}>{props.name}</Link>
-            </h3>
-            <div className={styles.layout}>
-              <p className={cx(styles.price)}>
-                {settings.currency}
-                {props.price}
-              </p>
-              {props.oldPrice ? (
-                <p className={styles.old_price}>
-                  {settings.currency}
-                  {props.oldPrice}
-                </p>
-              ) : (
-                ''
-              )}
-            </div>
-            <div dangerouslySetInnerHTML={{ __html: props.description }}></div>
-          </div>
+      <div className="flex flex-col flex-grow">
+        <div className="py-4 px-2 flex flex-col justify-between flex-grow">
+          <h3 className={styles.title}>
+            <Link to={`shop/product/${props.id}`}>{props.name}</Link>
+          </h3>
+          <div
+            className="text-base md:text-xs text-secondary/60"
+            dangerouslySetInnerHTML={{ __html: props.description }}
+          ></div>
         </div>
         <button
           onClick={() => {
             addBagHandler(Number(props.price))
           }}
           type="submit"
-          className="btn-primary mt-3 w-full"
+          className="px-2 w-full flex flex-row justify-between items-center gap-2"
         >
-          Add to bag
+          <div className="flex flex-row gap-2 items-baseline">
+            <p className={cx(styles.price)}>
+              {settings.currency}
+              {props.price}
+            </p>
+            {props.oldPrice ? (
+              <p className={styles.old_price}>
+                {settings.currency}
+                {props.oldPrice}
+              </p>
+            ) : (
+              ''
+            )}
+          </div>
+          <ShoppingCartIcon width={18} height={18} fill="currentColor" className="fill-accent" />
         </button>
       </div>
     </div>

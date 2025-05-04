@@ -1,3 +1,5 @@
+import { getRndInteger } from '~/fixtures/math'
+
 export function homeProducts(): Shop.Product[] {
   return [
     {
@@ -6,16 +8,15 @@ export function homeProducts(): Shop.Product[] {
       description:
         '<p>Made from premium, soft-touch cotton for ultimate comfort and durability. Designed with a modern, comfortable fit.</p>',
       imageSrc: 'images/3.jpg',
-      price: '35',
+      price: String(getRndInteger(10, 100)),
     },
     {
       id: 2,
       name: 'Kaleidoscope Geometric t-shirt',
-      description:
-        '<p>Make a statement with our eye-catching Kaleidoscope Geometric t-shirt!</p>',
+      description: '<p>Make a statement with our eye-catching Kaleidoscope Geometric t-shirt!</p>',
       imageSrc: 'images/2.jpg',
-      price: '35',
-      oldPrice: '55',
+      price: String(getRndInteger(10, 100)),
+      oldPrice: String(getRndInteger(10, 100)),
     },
     {
       id: 3,
@@ -23,7 +24,31 @@ export function homeProducts(): Shop.Product[] {
       description:
         '<p>Perfect for anyone who loves bold patterns, modern art, and expressing their vibrant personality</p>',
       imageSrc: 'images/4.jpg',
-      price: '35',
+      price: String(getRndInteger(10, 100)),
+    },
+    {
+      id: 4,
+      name: 'The Kaleidoscope Geometric Tee',
+      description:
+        '<p>Made from premium, soft-touch cotton for ultimate comfort and durability. Designed with a modern, comfortable fit.</p>',
+      imageSrc: 'images/3.jpg',
+      price: String(getRndInteger(10, 100)),
+    },
+    {
+      id: 5,
+      name: 'The Kaleidoscope Geometric Tee',
+      description:
+        '<p>Made from premium, soft-touch cotton for ultimate comfort and durability. Designed with a modern, comfortable fit.</p>',
+      imageSrc: 'images/6.jpg',
+      price: String(getRndInteger(10, 100)),
+    },
+    {
+      id: 6,
+      name: 'The Kaleidoscope Geometric Tee',
+      description:
+        '<p>Made from premium, soft-touch cotton for ultimate comfort and durability. Designed with a modern, comfortable fit.</p>',
+      imageSrc: 'images/7.jpg',
+      price: String(getRndInteger(10, 100)),
     },
   ]
 }
@@ -35,14 +60,8 @@ export function single(): Shop.Product {
     description:
       '<p>Made from premium, soft-touch cotton for ultimate comfort and durability. Designed with a modern, comfortable fit.</p>',
     imageSrc: '/images/1.jpg',
-    price: '35',
-    images: [
-      '/images/1.jpg',
-      '/images/2.jpg',
-      '/images/3.jpg',
-      '/images/4.jpg',
-      '/images/5.jpg',
-    ],
+    price: String(getRndInteger(10, 100)),
+    images: ['/images/1.jpg', '/images/2.jpg', '/images/3.jpg', '/images/4.jpg', '/images/5.jpg'],
   }
 }
 
@@ -54,8 +73,8 @@ export function listProducts(): Shop.Product[] {
       description:
         '<p>Made from premium, soft-touch cotton for ultimate comfort and durability. Designed with a modern, comfortable fit.</p>',
       imageSrc: '/images/1.jpg',
-      price: '35',
-      oldPrice: '55',
+      price: String(getRndInteger(10, 100)),
+      oldPrice: String(getRndInteger(10, 100)),
     },
     {
       id: 2,
@@ -63,8 +82,8 @@ export function listProducts(): Shop.Product[] {
       description:
         '<p>Made from premium, soft-touch cotton for ultimate comfort and durability. Designed with a modern, comfortable fit.</p>',
       imageSrc: '/images/5.jpg',
-      price: '35',
-      oldPrice: '55',
+      price: String(getRndInteger(10, 100)),
+      oldPrice: String(getRndInteger(10, 100)),
     },
     {
       id: 3,
@@ -72,7 +91,15 @@ export function listProducts(): Shop.Product[] {
       description:
         '<p>Made from premium, soft-touch cotton for ultimate comfort and durability. Designed with a modern, comfortable fit.</p>',
       imageSrc: '/images/6.jpg',
-      price: '35',
+      price: String(getRndInteger(10, 100)),
+    },
+    {
+      id: 4,
+      name: 'Item',
+      description:
+        '<p>Made from premium, soft-touch cotton for ultimate comfort and durability. Designed with a modern, comfortable fit.</p>',
+      imageSrc: '/images/7.jpg',
+      price: String(getRndInteger(10, 100)),
     },
   ]
 }
@@ -85,10 +112,8 @@ export function cart(): Shop.Product[] {
       description:
         '<p>Made from premium, soft-touch cotton for ultimate comfort and durability. Designed with a modern, comfortable fit.</p>',
       imageSrc: '/images/7.jpg',
-      price: '35',
-      images: [
-        '/images/7.jpg',
-      ]
+      price: String(getRndInteger(10, 100)),
+      images: ['/images/7.jpg'],
     },
     {
       id: 2,
@@ -96,10 +121,8 @@ export function cart(): Shop.Product[] {
       description:
         '<p>Made from premium, soft-touch cotton for ultimate comfort and durability. Designed with a modern, comfortable fit.</p>',
       imageSrc: '/images/3.jpg',
-      price: '40',
-      images: [
-        '/images/4.jpg',
-      ]
+      price: String(getRndInteger(10, 100)),
+      images: ['/images/4.jpg'],
     },
   ]
 }

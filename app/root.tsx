@@ -1,16 +1,24 @@
-import { isRouteErrorResponse, Links, Meta, NavLink, Outlet, Scripts, ScrollRestoration } from 'react-router'
+import {
+  isRouteErrorResponse,
+  Links,
+  Meta,
+  NavLink,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+} from 'react-router'
 
 import type { Route } from './+types/root'
 import '~/app.css'
-import ShopMenu from '~/components/shop/menu/menu'
-import { useCallback, useState, useContext } from 'react'
+import { ShopMenuPopup, ShopMenu } from '~/components/shop/menu/menu'
+import { useCallback, useState, useContext, useMemo, type ReactNode } from 'react'
 import CartIco from '~/components/cart/ui'
 import useBodyScrollLock from '~/hooks/bodylock'
 import ThemeContext from '~/contexts/theme'
 import { Bars3Icon, MoonIcon, SunIcon, XMarkIcon } from '@heroicons/react/16/solid'
 
-export function Layout({ children }: { children: React.ReactNode }) {
-  const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false)
+export function Layout({ children }: { children: ReactNode }) {
+  const [isMenuVisible, setisMenuVisible] = useState<boolean>(false)
 
   useBodyScrollLock(isMenuVisible)
   const { theme, setTheme } = useContext(ThemeContext)
@@ -25,7 +33,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }, [setTheme, theme])
 
   const onMenuButton = useCallback(() => {
-    setIsMenuVisible(!isMenuVisible)
+    setisMenuVisible(!isMenuVisible)
   }, [isMenuVisible])
 
   return (
@@ -39,44 +47,51 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <div className="root flex flex-col min-h-full">
-          <header className="sticky top-0 bg-primary flex flex-row justify-between items-center sm:p-4 p-3 z-10">
-            <div className="flex flex-row items-center gap-1">
-              <button className="cursor-pointer h-[34px] px-3" onClick={onMenuButton}>
-                {isMenuVisible ? (
-                  <XMarkIcon width={18} height={18} />
-                ) : (
-                  <Bars3Icon width={18} height={18} />
-                )}
-              </button>
-              <NavLink className={'font-bold uppercase'} to={'/'}>
-                Shop
-              </NavLink>
-            </div>
-            <div className="icons flex flex-row items-center gap-2">
-              <button className="cursor-pointer h-[34px] px-1" onClick={themeToggle}>
-                {theme === 'dark' ? (
-                  <SunIcon width={18} height={18} />
-                ) : (
-                  <MoonIcon width={18} height={18} />
-                )}
-              </button>
-              <NavLink
-                to={'/cart'}
-                className={({ isActive }) =>
-                  isActive
-                    ? 'flex flex-row gap-1 items-center h-[34px] px-2 text-accent border border-transparent rounded-md'
-                    : 'flex flex-row gap-1 items-center h-[34px] px-2 border border-transparent'
-                }
-              >
-                <CartIco />
-              </NavLink>
+          <header className="sticky top-0 bg-primary sm:py-4 py-3 z-10 flex justify-center">
+            <div className="wrap flex flex-row justify-between items-center max-w-7xl">
+              <div className="flex flex-row items-center gap-1">
+                <button className="cursor-pointer h-[34px] px-3 md:hidden" onClick={onMenuButton}>
+                  {isMenuVisible ? (
+                    <XMarkIcon width={18} height={18} />
+                  ) : (
+                    <Bars3Icon width={18} height={18} />
+                  )}
+                </button>
+                <NavLink className={'font-bold uppercase'} to={'/'}>
+                  Shop
+                </NavLink>
+              </div>
+              <div className="icons flex flex-row items-center gap-2">
+                <button className="cursor-pointer h-[34px] px-1" onClick={themeToggle}>
+                  {theme === 'dark' ? (
+                    <SunIcon width={18} height={18} />
+                  ) : (
+                    <MoonIcon width={18} height={18} />
+                  )}
+                </button>
+                <NavLink
+                  to={'/cart'}
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'flex flex-row gap-1 items-center h-[34px] px-2 text-accent border border-transparent rounded-md'
+                      : 'flex flex-row gap-1 items-center h-[34px] px-2 border border-transparent'
+                  }
+                >
+                  <CartIco />
+                </NavLink>
+              </div>
             </div>
           </header>
-          <main className="flex grow sm:py-6 py-0">{children}</main>
+          <main className="@container wrap mx-auto max-w-7xl flex grow justify-center py-0 gap-6">
+            <aside className="hidden md:flex max-w-50 w-full flex-col">
+              <ShopMenu />
+            </aside>
+            {children}
+          </main>
           {isMenuVisible ? (
-            <ShopMenu
+            <ShopMenuPopup
               isVisible={(state: boolean) => {
-                setIsMenuVisible(state)
+                setisMenuVisible(state)
               }}
             />
           ) : (

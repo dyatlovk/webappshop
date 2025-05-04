@@ -8,4 +8,5 @@ export default [
   ]),
   route('cart', 'routes/cart.tsx'),
   route('checkout', 'routes/checkout.tsx'),
+  route('columns', 'routes/columns.tsx'),
 ] satisfies RouteConfig

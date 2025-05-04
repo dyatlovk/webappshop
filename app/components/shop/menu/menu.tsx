@@ -9,7 +9,7 @@ interface Props {
   isVisible: (state: boolean) => void
 }
 
-const ShopMenu = ({ isVisible }: Props): JSX.Element => {
+const ShopMenuPopup = ({ isVisible }: Props): JSX.Element => {
   const mainMenu = useMemo(() => menu(), [])
   const menuRef = useRef<HTMLDivElement>(null)
 
@@ -32,8 +32,8 @@ const ShopMenu = ({ isVisible }: Props): JSX.Element => {
   }, [isVisible])
 
   return (
-    <div className={classNames(styles.layout)} ref={menuRef}>
-      <nav className={classNames('flex flex-col grow gap-1', { isVisible: isVisible })}>
+    <div className={classNames(styles.layout, { isVisible: isVisible })} ref={menuRef}>
+      <nav className={classNames('flex flex-col grow gap-1')}>
         {mainMenu.map((item, id) => (
           <div key={id}>
             {item.child ? (
@@ -46,6 +46,22 @@ const ShopMenu = ({ isVisible }: Props): JSX.Element => {
       </nav>
     </div>
   )
+}
+
+const ShopMenu = ():  JSX.Element => {
+  const mainMenu = useMemo(() => menu(), [])
+  
+  return <nav className={classNames('flex flex-col grow gap-1')}>
+    {mainMenu.map((item, id) => (
+      <div key={id}>
+        {item.child ? (
+          <Group parent={item} />
+        ) : (
+          <Item item={item} />
+        )}
+      </div>
+    ))}
+  </nav>
 }
 
 interface PropsGroup {
@@ -109,4 +125,4 @@ const Item = (props: PropsItem): JSX.Element => {
   )
 }
 
-export default ShopMenu
+export {ShopMenuPopup, ShopMenu}

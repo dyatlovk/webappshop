@@ -55,9 +55,13 @@ h2 {
             @apply cursor-text text-gray-500;
         }
     }
+    
+    .goods-grid {
+        @apply grid grid-cols-1 justify-start @sm:grid-cols-1 @md:grid-cols-2 @lg:grid-cols-2 @xl:grid-cols-2 @2xl:grid-cols-3 @3xl:grid-cols-3 gap-10 gap-y-15;
+    }
 
     .wrap {
-        @apply px-4 sm:px-6 box-border;
+        @apply px-4 sm:px-6 box-border w-full;
     }
 
     .loader {
