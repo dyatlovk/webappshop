@@ -5,7 +5,7 @@ import classNames from 'classnames/bind'
 import settings from '~/fixtures/settings'
 import { Link } from 'react-router'
 import { Image } from '~/framework/link'
-import { ShoppingBagIcon, ShoppingCartIcon } from '@heroicons/react/16/solid'
+import { ShoppingCartIcon } from '@heroicons/react/16/solid'
 
 const cx = classNames.bind(styles)
 

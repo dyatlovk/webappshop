@@ -11,7 +11,7 @@ import {
 import type { Route } from './+types/root'
 import '~/app.css'
 import { ShopMenuPopup, ShopMenu } from '~/components/shop/menu/menu'
-import { useCallback, useState, useContext, useMemo, type ReactNode } from 'react'
+import { useCallback, useState, useContext, type ReactNode } from 'react'
 import CartIco from '~/components/cart/ui'
 import useBodyScrollLock from '~/hooks/bodylock'
 import ThemeContext from '~/contexts/theme'
