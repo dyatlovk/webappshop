@@ -28,9 +28,7 @@ export function Layout({ children }: { children: ReactNode }) {
       const tg = (window as any).Telegram.WebApp
       tg.ready()
 
-      if (tg.themeParams.is_dark) {
-        setTheme('dark')
-      }
+      setTheme(tg.colorScheme)
     }
   }, [setTheme])
 

@@ -2,13 +2,10 @@ declare global {
   interface Window {
     Telegram?: {
       WebApp: {
-        ready: () => void;
-        themeParams: {
-          is_dark: boolean;
-        };
-        expand: () => void;
-      };
-    };
+        ready: () => void
+        colorScheme: string
+      }
+    }
   }
 }
 
@@ -22,15 +19,15 @@ namespace App {
     theme: string
     setTheme: (theme: string) => void
   }
-  
+
   declare enum Theme {
     light = 'light',
     dark = 'dark',
   }
-  
+
   declare interface Settings {
-    currency: string,
-    basePath: string,
+    currency: string
+    basePath: string
   }
 }
 
@@ -59,4 +56,3 @@ namespace Shop {
     wareHouseId: number
   }
 }
-
